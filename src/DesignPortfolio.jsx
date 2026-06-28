@@ -141,8 +141,8 @@ function DesignPortfolio() {
             <a className="contact-button" href="mailto:james.pleau@example.com">
               Get in Touch
             </a>
-            <a className="contact-email-subtext" href="mailto:james.pleau@example.com">
-              james.pleau@example.com
+            <a className="contact-email-subtext" href="mailto:james.pleau@gmail.com">
+              james.pleau@gmail.com
             </a>
             
             <div className="contact-socials">
