@@ -1,32 +1,56 @@
-import { Link } from 'react-router-dom';
-import resume from './assets/documents/James_Pleau_Front_End_Resume.pdf';
-import './DesignPortfolio.css';
+import { Link } from 'react-router-dom'
+import resume from './assets/documents/James_Pleau_Front_End_Resume.pdf'
+import { caseStudies } from './caseStudies'
+import './DesignPortfolio.css'
 
 function ResumePreview() {
   return (
-    <main className="portfolio-page">
-      <header className="portfolio-nav">
-        <Link className="header-secondary-btn" to="/" aria-label="Back to portfolio home">
-          Back
+    <main className="site-page resume-page">
+      <header className="site-header">
+        <Link to="/" className="site-brand" aria-label="Go to home page">
+          James Pleau
         </Link>
-        <a className="header-resume-btn" href={resume} download="James_Pleau_Front_End_Resume.pdf" aria-label="Download resume">
-          Download
-        </a>
+
+        <nav className="site-nav" aria-label="Primary">
+          <Link to="/">Home</Link>
+
+          <div className="site-nav-dropdown">
+            <Link to="/#work" className="site-nav-dropdown-trigger">
+              Projects
+            </Link>
+
+            <div className="site-nav-dropdown-menu" aria-label="Project shortcuts">
+              {caseStudies.map((item) => (
+                <Link key={item.id} to={`/case-study/${item.slug}`} className="site-nav-dropdown-link">
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <a href="/#about">About</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+
+        <Link className="site-header-link" to="/resume" aria-label="Open resume preview page">
+          Resume
+        </Link>
       </header>
 
-      <section className="resume-preview-shell" aria-label="Resume preview">
+      <section className="resume-panel" aria-label="Resume preview">
+
         <iframe
-          className="resume-preview-frame"
+          className="resume-frame"
           src={`${resume}#view=FitH`}
           title="James Pleau resume preview"
           loading="lazy"
         />
-        <p className="resume-preview-fallback">
-          If the preview does not load on your device, use the Download button above.
+        <p className="resume-fallback">
+          If the preview does not load on your device, use the download link below.
         </p>
       </section>
     </main>
   );
 }
 
-export default ResumePreview;
+export default ResumePreview
